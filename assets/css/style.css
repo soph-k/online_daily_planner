@@ -1,27 +1,11 @@
-/**************************************************************************
- _____      ______      __       ____       ____       _
-||     \\   | _____|    //\\     | ___\\   / ____|    // \\
-||      \\  ||__       //  \\    ||    || | |___    / /   \ \
-||       || | __|     //____\\   ||___//   \ ____\ | |     | |
-||      //  ||_____  //      \\  || \\     _____ || \ \   / /
-||_____//   |______|//        \\ ||   \\  |_____ /    \\_//
 
-Author: Sophia Kiani
-Date: 09/16/2021
-Description: sophk_onlie_daily_calender 
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@100&display=swap');
 
-CSS TABLE OF CONTENTS
-    ===== Base ====
-        |-- 1.0 - Reset
-        |-- 2.0 - Gobal
-        |-- 3.0 - Content
-        |-- 4.0 - Responsive
-
-*************************************************************************/
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-size: 16px;
     line-height: 1;
+    background-color:rgba(116, 116, 116, 0.199);
   }
   
 textarea {
@@ -29,13 +13,13 @@ textarea {
   border: none;
   resize: none;
   color: #000000;
-  border-left: 1px solid black;
+  border: 1px solid black;
   padding: 10px;
 }
   
 .jumbotron {
   text-align: center;
-  background-color: transparent;
+  background-color: rgba(228, 201, 223, 0.733);
   color: black;
   border-radius: 0;
   border-bottom: 10px solid black;

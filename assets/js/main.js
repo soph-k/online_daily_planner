@@ -1,44 +1,44 @@
-//  _____      ______      __       ____       ____       _
-// ||     \\   | _____|    //\\     | ___\\   / ____|    // \\
-// ||      \\  ||__       //  \\    ||    || | |___    / /   \ \
-// ||       || | __|     //____\\   ||___//   \ ____\ | |     | |
-// ||      //  ||_____  //      \\  || \\     _____ || \ \   / /
-// ||_____//   |______|//        \\ ||   \\  |_____ /    \\_//
-
-// Author: Sophia Kiani
-// Date: 09/16/2021
-// Purpose: sophk_onlie_daily_calender
-
+/////////////////////////////////////////////////////////////////////////
 let currentDate = $("#currentDay").text(moment().format("MMMM Do YYYY, h:mm:ss a"));
-let saveButtonEl = $("saveBtn");
-let currentHour = moment().hours();
+let hourEl = $(".hour");
+const saveButtonEl = $(".saveBtn");
+let currentHour = moment().format("HH");
 
 
+////////////////////////////////////////////////////////////////////////
 function stylingTimes () {
-  currentDate
   $("#currentDay").append(currentDate);
 
-  $(".hour").each(() => {
-    let selectionHour = parseInt($(this).attr("data-hour"));
+  hourEl.each( function() {
+    let selectionHour = parseInt($(this).attr(".data-time"));
     if (selectionHour > currentHour) {
       $(this).addClass("future")
     }
     else if (selectionHour < currentHour) {
-      $(this).addClass("present");
+      $(this).addClass("past");
     }
     else {
-      $(this).addClass("past");
+      $(this).addClass("present");
     }
   })
 }
 
+
+///////////////////////////////////////////////////////////////////////
 saveButtonEl.on("click", function () {
-    var timeSave = $(this).parent().attr("data-time");
+    var timeSave = $(this).parent().attr(".data-time");
     var descriptionSave = $(this).find(".description").val();
-    localStorage.setItem(timeSave, descriptionSave);
+    localStorage.setItem(".savePlanner", JSON.stringify(timeSave, descriptionSave));
+    // renderDescription ();
 });
 
+
+// function renderDescription() {
+//   var saveDate = JSON.parse(localStorage.getItem("savePlanner"));
+//   if (saveDate !== null) {
+//     $(".description").textContent = descriptionSave;
+//     $(".data-time").textContent = timeSave;
+//   }
+// }
+
 stylingTimes ();
-
-
-

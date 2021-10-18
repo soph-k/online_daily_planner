@@ -1,43 +1,40 @@
-  _____      ______      __       ____       ____       _
-||     \\   | _____|    //\\     | ___\\   / ____|    // \\
-||      \\  ||__       //  \\    ||    || | |___    / /   \ \
-||       || | __|     //____\\   ||___//   \ ____\ | |     | |
-||      //  ||_____  //      \\  || \\     _____ || \ \   / /
-||_____//   |______|//        \\ ||   \\  |_____ /    \\_//
+# SophK Online Daily Planer 
 
-Author: DearSO
-GitHub: https://github.com/soph-k
+## Description
+
+    This file contains html, css, and js, along with Jquery and Bootstrap Libaray files for a webpage for daily online planner that contains 11 slots to add hourly events, 
+    include jumbotran, area were to add description, and local storage. 
 
 
-# sophk_online_daily_planner
-
-  Created a fun simple daily planner from basic javascript css and html.
-
-
-# Description
-
-    This file contains basic html, css, and js files for a webpage that contains 5 short randomized question, 
-    include naviagtion bar, timer, scoreboard, and score based on correct and incorrect answers. 
+## Authors
+   - Author: Sophia
+   - GitHub: [soph-k](https://github.com/soph-k)
+   - Version 1.1
 
 
-# Authors
-
-    Sophia Kiani 
-    Version 1.1
-
-
-# Screen Shot
+##  Link to Deployed Page
 `
-    ![Preview Of Sophk Fun Quiz webpage](./assets/images/sophk_fun_quiz_screenshot.png)
+    [Live Demo](https://soph-k.github.io/sophk_online_daily_planner/)
+
+
+## Screen Shot
+`
+    ![Preview Of Sophk Online Daily Planner webpage](./assets/images/screenshot.png)
+
+
+## Features
+
+    - HTML 
+    - CSS 
+    - Javascript 
+    - JQuery 
+    - Bootstrap
 
     
-# Link
+## Link to Repo Page
 `
-    [Check out Sophk Online Daily Planner webpage...](https://soph-k.github.io/sophk_fun_quiz/)
-    [Or check out the GitHub repository for the Sophk Online Daily Planner webpage](https://github.com/soph-k/sophk_fun_quiz/) 
-    
- 
-# Bugs
+    [Repo](https://github.com/soph-k/sophk_online_daily_planner) 
 
-    There are currently no known bugs within this file.
 
+### Bugs 
+    - Local storage is not working.
