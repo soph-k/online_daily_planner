@@ -2,15 +2,17 @@
 let currentDate = $("#currentDay").text(moment().format("MMMM Do YYYY, h:mm:ss a"));
 let hourEl = $(".hour");
 const saveButtonEl = $(".saveBtn");
-let currentHour = moment().format("HH");
-
+let currentHour = parseInt(moment().hours());
+let timeSave = $(this).parent().attr("id");
+let descriptionSave = $(this).find(".description").val();
 
 ////////////////////////////////////////////////////////////////////////
 function stylingTimes () {
   $("#currentDay").append(currentDate);
 
-  hourEl.each( function() {
-    let selectionHour = parseInt($(this).attr(".data-time"));
+  hourEl.each(function () {
+    const selectionHour = parseInt($(this).attr("id"));
+    $(this).removeClass("past", "present", "future");
     if (selectionHour > currentHour) {
       $(this).addClass("future")
     }
@@ -24,21 +26,37 @@ function stylingTimes () {
 }
 
 
-///////////////////////////////////////////////////////////////////////
-saveButtonEl.on("click", function () {
-    var timeSave = $(this).parent().attr(".data-time");
-    var descriptionSave = $(this).find(".description").val();
-    localStorage.setItem(".savePlanner", JSON.stringify(timeSave, descriptionSave));
-    // renderDescription ();
-});
+
+function savedDescription() {
+  var saveDate = JSON.parse(localStorage.getItem("savePlanner", descriptionSave));
+  if (saveDate !== null) {
+    $(".description").text(descriptionSave);
+    $(".data-time").text(timeSave);
+  }
+}
 
 
-// function renderDescription() {
-//   var saveDate = JSON.parse(localStorage.getItem("savePlanner"));
-//   if (saveDate !== null) {
-//     $(".description").textContent = descriptionSave;
-//     $(".data-time").textContent = timeSave;
-//   }
-// }
 
-stylingTimes ();
+function saveNotes (event) {
+  event.preventDefault ();
+  const saveEvents = {
+    time: timeSave,
+    description: descriptionSave
+  }
+  localStorage.setItem("saveDescription", `[]`);
+  const oldEvents = JSON.parse(localStorage.getItem("saveDescription", saveEvents)) || [];
+  oldEvents.push(saveEvents);
+
+  localStorage.setItem("highScoresDB", JSON.stringify(oldEvents));
+
+  console.log(oldEvents)
+  // if (oldEvents !=null) {
+  //   $(".description").text(descriptionSave);
+  //   $(".data-time").text(timeSave);
+  // }
+
+  
+}
+
+saveButtonEl.click(saveNotes);
+
