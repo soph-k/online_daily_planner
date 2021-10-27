@@ -33,10 +33,10 @@ function saveNotes() {
     description: descriptionEl.val()
   }
 
-  oldEvents.push(saveEvents);
-    localStorage.setItem('saved', JSON.stringify(oldEvents));
+  oldEvents.push(saveEvents);                                // Pushes in new event into old event
+  localStorage.setItem('saved', JSON.stringify(oldEvents));  // Saves old and new events in a string
 
-  if (localStorage.getItem("saved") !==null) {
+  if (localStorage.getItem("saved") !==null) {              
     displayReminders();
   }
 }
@@ -44,7 +44,7 @@ function saveNotes() {
 // Retrives items from local storage and displays them
 function displayReminders() {
   descriptionEl.text(
-  oldEvents.map((saveEventsArray) => {
+  oldEvents.map((saveEventsArray) => {                        // Map displays arrays from local storage
     return (saveEventsArray.description);
   }))
 }
