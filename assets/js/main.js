@@ -1,62 +1,57 @@
-/////////////////////////////////////////////////////////////////////////
-let currentDate = $("#currentDay").text(moment().format("MMMM Do YYYY, h:mm:ss a"));
-let hourEl = $(".hour");
+/////////////////////////////// Global Selectors //////////////////////////////////////////
+const currentDate = $("#currentDay").text(moment().format("MMMM Do YYYY, h:mm:ss a"));
+const hourEl = $('.hour');
+const rowHourEl = parseInt($('.row').data('hour'));
+const rowHourElString = $('.row').attr('data-time');
 const saveButtonEl = $(".saveBtn");
-let currentHour = parseInt(moment().hours());
-let timeSave = $(this).parent().attr("id");
-let descriptionSave = $(this).find(".description").val();
+const currentHour = parseInt(moment().hours("HH"));
+const descriptionEl = $('.container').find(('.description'));
+const oldEvents = JSON.parse(localStorage.getItem("saved")) || [];
 
-////////////////////////////////////////////////////////////////////////
-function stylingTimes () {
-  $("#currentDay").append(currentDate);
 
-  hourEl.each(function () {
-    const selectionHour = parseInt($(this).attr("id"));
-    $(this).removeClass("past", "present", "future");
-    if (selectionHour > currentHour) {
-      $(this).addClass("future")
+///////////////////////////////// Functions ////////////////////////////////////////////////
+function stylingTimes() {
+  $("#currentDay").append(currentDate);                        // Displays user current time and date.
+
+  hourEl.each(function () {                                    // Loop for each hour element to add styling... 
+    if (rowHourEl > currentHour) {                             // based on user's current time.
+      $(this).addClass("future");
     }
-    else if (selectionHour < currentHour) {
+    else if (rowHourEl < currentHour) {
       $(this).addClass("past");
     }
-    else {
+    else (rowHourEl == currentHour); {
       $(this).addClass("present");
     }
-  })
+  });
 }
 
-
-
-function savedDescription() {
-  var saveDate = JSON.parse(localStorage.getItem("savePlanner", descriptionSave));
-  if (saveDate !== null) {
-    $(".description").text(descriptionSave);
-    $(".data-time").text(timeSave);
-  }
-}
-
-
-
-function saveNotes (event) {
-  event.preventDefault ();
+// Saves items to local storage
+function saveNotes() {
   const saveEvents = {
-    time: timeSave,
-    description: descriptionSave
+    time: rowHourElString,
+    description: descriptionEl.val()
   }
-  localStorage.setItem("saveDescription", `[]`);
-  const oldEvents = JSON.parse(localStorage.getItem("saveDescription", saveEvents)) || [];
+
   oldEvents.push(saveEvents);
+    localStorage.setItem('saved', JSON.stringify(oldEvents));
 
-  localStorage.setItem("highScoresDB", JSON.stringify(oldEvents));
-
-  console.log(oldEvents)
-  // if (oldEvents !=null) {
-  //   $(".description").text(descriptionSave);
-  //   $(".data-time").text(timeSave);
-  // }
-
-  
+  if (localStorage.getItem("saved") !==null) {
+    displayReminders();
+  }
 }
 
+// Retrives items from local storage and displays them
+function displayReminders() {
+  descriptionEl.text(
+  oldEvents.map((saveEventsArray) => {
+    return (saveEventsArray.description);
+  }))
+}
+
+////////////////////////// Event Listeners ////////////////////////////////
 saveButtonEl.click(saveNotes);
 
+
+//////////////////////// Functions When Page Loaded //////////////////////
+stylingTimes();
