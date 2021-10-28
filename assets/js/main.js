@@ -1,53 +1,51 @@
 /////////////////////////////// Global Selectors //////////////////////////////////////////
 const currentDate = $("#currentDay").text(moment().format("MMMM Do YYYY, h:mm:ss a"));
-const hourEl = $('.hour');
-const rowHourEl = parseInt($('.row').data('hour'));
-const rowHourElString = $('.row').attr('data-time');
+const rowHourEl = $('.row').data('time');
+const rowHourElString = $('.row').find('data-time');
 const saveButtonEl = $(".saveBtn");
-const currentHour = parseInt(moment().hours("HH"));
+const currentHour = moment().hours("HH");
 const descriptionEl = $('.container').find(('.description'));
 const oldEvents = JSON.parse(localStorage.getItem("saved")) || [];
 
 
 ///////////////////////////////// Functions ////////////////////////////////////////////////
+// Displays current date and adds styling
 function stylingTimes() {
-  $("#currentDay").append(currentDate);                        // Displays user current time and date.
+  $("#currentDay").append(currentDate);                       // Displays user current time and date.
 
-  hourEl.each(function () {                                    // Loop for each hour element to add styling... 
-    if (rowHourEl > currentHour) {                             // based on user's current time.
+  $('div').each(function () {                                // Loop for each hour element to add styling... 
+    const rowTime = $(this).data('time');
+    if (rowTime < currentHour) {                             // based on user's current time.
       $(this).addClass("future");
     }
-    else if (rowHourEl < currentHour) {
+    else if (rowTime > currentHour) {
       $(this).addClass("past");
     }
-    else (rowHourEl == currentHour); {
+    else (rowTime == currentHour); {
       $(this).addClass("present");
     }
   });
+  displayReminders();
+
 }
 
 // Saves items to local storage
 function saveNotes() {
-  const saveEvents = {
-    time: rowHourElString,
-    description: descriptionEl.val()
-  }
-
-  oldEvents.push(saveEvents);                                // Pushes in new event into old event
-  localStorage.setItem('saved', JSON.stringify(oldEvents));  // Saves old and new events in a string
-
-  if (localStorage.getItem("saved") !==null) {              
-    displayReminders();
-  }
+  $('textarea').each(() => {
+    const newNotes = $(this).val();
+    oldEvents.push(newNotes);                                     // Pushes in new event into old event
+  });                      
+  localStorage.setItem("saved", JSON.stringify(oldEvents));  // Saves old and new events in a string
+  displayReminders();
 }
 
 // Retrives items from local storage and displays them
 function displayReminders() {
-  descriptionEl.text(
-  oldEvents.map((saveEventsArray) => {                        // Map displays arrays from local storage
-    return (saveEventsArray.description);
-  }))
+  $('textarea').each((saved) => {
+    $(this).text(saved.oldEvents)
+  })
 }
+
 
 ////////////////////////// Event Listeners ////////////////////////////////
 saveButtonEl.click(saveNotes);
@@ -55,3 +53,4 @@ saveButtonEl.click(saveNotes);
 
 //////////////////////// Functions When Page Loaded //////////////////////
 stylingTimes();
+displayReminders();
