@@ -76,6 +76,4 @@ For questions about this project, please review my GitHub repo at [soph-k](https
 
 
 ### Bugs 
-- Local storage is not working.
-
-- Color attr not working. 
+None.
