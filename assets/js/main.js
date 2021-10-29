@@ -7,6 +7,7 @@ const currentHour = moment().format("HH");
 const descriptionEl = $('.container').find(('.description'));
 let oldEvents = [];
 
+
 ///////////////////////////////// Functions ////////////////////////////////////////////////
 // Displays current date and adds styling
 function stylingTimes() {
@@ -28,17 +29,17 @@ function stylingTimes() {
 
 // Saves items to local storage
 function saveNotes() {
-  oldEvents = [];
   $('textarea').each(function () {
-    const newNotes = $(this).val();
-    oldEvents.push(newNotes);                                     // Pushes in new event into old event
-  });                      
-  localStorage.setItem("saved", JSON.stringify(oldEvents));  // Saves old and new events in a string
+    if(!($(this).val() === "")) {
+      const newNotes = $(this).val();
+      oldEvents.push(newNotes);                                  // Pushes in new event into old event
+  }});                      
+  localStorage.setItem("saved", JSON.stringify(oldEvents));    // Saves old and new events in a string
 }
 
 // Retrives items from local storage and displays them
 function displayReminders() {
-  oldEvents = JSON.parse(localStorage.getItem('saved'));
+  // oldEvents = JSON.parse(localStorage.getItem('saved'));
   $('textarea').each(() => {
     $(this).text(oldEvents)
   })
