@@ -42,7 +42,7 @@ includes jumbotran, area were to add description, and local storage.
 
 ##  Link to Deployed Page
 
-[Live Demo](https://soph-k.github.io/sophk_online_daily_planner/)
+[Live Demo](https://soph-k.github.io/online_daily_planner/)
 
 
 ## Screen Shot
@@ -60,7 +60,7 @@ includes jumbotran, area were to add description, and local storage.
     
 ## Link to Repo Page
 
-[Repo](https://github.com/soph-k/sophk_online_daily_planner) 
+[Repo](https://github.com/soph-k/online_daily_planner) 
 
 
 ## Contribution
