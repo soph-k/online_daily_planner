@@ -2,8 +2,8 @@
 ![license](https://img.shields.io/badge/license-MIT-red)
 
 <p align="center">
-    <img src="https://img.shields.io/github/repo-size/soph-k/sophk_fun_quiz"/>
-    <img src="https://img.shields.io/github/last-commit/soph-k/jdldjfj"/>
+    <img src="https://img.shields.io/github/repo-size/soph-k/online_daily_planner"/>
+    <img src="https://img.shields.io/github/last-commit/soph-k/online_daily_planner"/>
 </p>
 <p align="center">
     <img src="https://img.shields.io/badge/HTML-yellow"/>
