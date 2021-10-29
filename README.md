@@ -1,4 +1,4 @@
-# SophK Online Daily Planer 
+# Online Daily Planer 
 ![license](https://img.shields.io/badge/license-MIT-red)
 
 <p align="center">
