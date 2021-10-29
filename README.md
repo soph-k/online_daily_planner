@@ -15,7 +15,7 @@
 
 ## Overview
 
-This file contains html, css, and js, along with Jquery and Bootstrap Libaray files for a webpage 
+This project contains html, css, and js, along with Jquery and Bootstrap
 for daily online planner that contains 11 slots to add hourly events 
 includes jumbotran, area were to add description, and local storage. 
 
